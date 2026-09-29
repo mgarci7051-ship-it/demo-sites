@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Websites for Local Businesses | Mike Garcia</title>
+  <meta name="description" content="Simple, fast websites for local small businesses. See example sites.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #f5f7fa; --card: #fff; --ink: #111827; --muted: #6b7280; --line: #e5e7eb; --accent: #10b981; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Inter", system-ui, sans-serif; line-height: 1.55; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+    h1 { font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.1; margin: 0 0 0.75rem; letter-spacing: -0.02em; }
+    .lead { color: var(--muted); font-size: 1.1rem; margin: 0 0 2.5rem; max-width: 36rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+    .example { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.15s, box-shadow 0.15s; }
+    .example:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); }
+    .thumb { height: 150px; display: grid; place-items: center; font-size: 4rem; }
+    .thumb.detail { background: radial-gradient(ellipse at 70% 0%, rgba(34,211,238,0.35), transparent 60%), #0b0f14; }
+    .thumb.taco { background: linear-gradient(90deg, #c2410c 0 25%, #f59e0b 25% 50%, #15803d 50% 75%, #db2777 75%) top / 100% 8px no-repeat, #fff8ee; }
+    .example div.info { padding: 1.1rem 1.25rem 1.3rem; }
+    .example h2 { font-size: 1.15rem; margin: 0 0 0.25rem; }
+    .example p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .includes { margin-top: 2.5rem; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 1.5rem; }
+    .includes h2 { margin: 0 0 0.75rem; font-size: 1.2rem; }
+    .includes ul { margin: 0; padding-left: 1.2rem; columns: 2; column-gap: 2rem; }
+    .includes li { margin-bottom: 0.35rem; break-inside: avoid; }
+    footer { color: var(--muted); font-size: 0.9rem; margin-top: 2.5rem; }
+    @media (max-width: 560px) { .includes ul { columns: 1; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Websites for local businesses</h1>
+    <p class="lead">Simple, good-looking websites that work great on phones and help new customers find you. Here are a couple of examples. Tap one to try it.</p>
+
+    <div class="grid">
+      <a class="example" href="detailing/">
+        <div class="thumb detail">🚗</div>
+        <div class="info">
+          <h2>Mobile detailing</h2>
+          <p>Bold and modern, with package prices and a tap-to-call button</p>
+        </div>
+      </a>
+      <a class="example" href="taqueria/">
+        <div class="thumb taco">🌮</div>
+        <div class="info">
+          <h2>Restaurant / taquería</h2>
+          <p>Warm and friendly, with the menu, hours and directions</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="includes">
+      <h2>Every website includes</h2>
+      <ul>
+        <li>Looks great on phones</li>
+        <li>Tap-to-call button</li>
+        <li>Services or menu with prices</li>
+        <li>Hours and a Google Map</li>
+        <li>Your photos and reviews</li>
+        <li>Live within 7 days</li>
+      </ul>
+    </div>
+
+    <footer>Mike Garcia · Local web design</footer>
+  </div>
+</body>
+</html>

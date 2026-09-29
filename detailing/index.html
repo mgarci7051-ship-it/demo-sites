@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shine Line Mobile Detailing (Demo)</title>
+  <meta name="description" content="Demo website: mobile car detailing that comes to you.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #121a23;
+      --line: #1f2b38;
+      --text: #eef3f8;
+      --muted: #93a4b5;
+      --accent: #22d3ee;
+      --accent-dark: #0891b2;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: "Outfit", system-ui, sans-serif; line-height: 1.55; }
+    a { color: inherit; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 1.25rem; }
+
+    .demo-bar { background: #fde047; color: #1a1a1a; text-align: center; font-size: 0.85rem; padding: 0.45rem 1rem; }
+    .demo-bar a { font-weight: 600; }
+
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+    .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .call-top { text-decoration: none; border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; border-radius: 999px; font-weight: 600; white-space: nowrap; }
+
+    .hero { padding: 4rem 0 3.5rem; background: radial-gradient(ellipse at 70% 0%, rgba(34, 211, 238, 0.18), transparent 60%); }
+    .hero h1 { font-size: clamp(2.3rem, 6vw, 3.8rem); line-height: 1.05; margin: 0 0 1rem; letter-spacing: -0.03em; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero p { color: var(--muted); font-size: 1.15rem; max-width: 34rem; margin: 0 0 2rem; }
+    .btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn { display: inline-block; text-decoration: none; font-weight: 600; padding: 0.9rem 1.5rem; border-radius: 12px; }
+    .btn-main { background: var(--accent); color: #042f37; }
+    .btn-main:hover { background: #67e8f9; }
+    .btn-ghost { border: 1px solid var(--line); }
+    .perks { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; color: var(--muted); font-size: 0.95rem; }
+
+    section { padding: 3.5rem 0; }
+    h2 { font-size: 1.9rem; margin: 0 0 0.5rem; letter-spacing: -0.02em; }
+    .sub { color: var(--muted); margin: 0 0 2rem; }
+
+    .packages { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .pkg { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 1.5rem; }
+    .pkg.best { border-color: var(--accent); position: relative; }
+    .pkg.best::before { content: "Most popular"; position: absolute; top: -0.7rem; left: 1.25rem; background: var(--accent); color: #042f37; font-size: 0.75rem; font-weight: 600; padding: 0.15rem 0.6rem; border-radius: 999px; }
+    .pkg h3 { margin: 0 0 0.25rem; }
+    .price { font-size: 2rem; font-weight: 800; margin: 0 0 1rem; }
+    .price small { font-size: 0.9rem; color: var(--muted); font-weight: 400; }
+    .pkg ul { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+    .pkg li { margin-bottom: 0.3rem; }
+
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; counter-reset: step; }
+    .step { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 1.25rem; }
+    .step::before { counter-increment: step; content: counter(step); display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--accent); color: #042f37; font-weight: 800; margin-bottom: 0.75rem; }
+    .step h3 { margin: 0 0 0.25rem; font-size: 1.1rem; }
+    .step p { margin: 0; color: var(--muted); }
+
+    .reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .review { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 1.25rem; margin: 0; }
+    .stars { color: #fbbf24; letter-spacing: 2px; }
+    .review p { margin: 0.5rem 0; }
+    .review cite { color: var(--muted); font-style: normal; font-size: 0.9rem; }
+    .sample-note { color: var(--muted); font-size: 0.85rem; margin-top: 1rem; }
+
+    .area { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; }
+    .map { background: var(--panel) repeating-linear-gradient(45deg, transparent 0 18px, rgba(255,255,255,0.03) 18px 36px); border: 1px solid var(--line); border-radius: 16px; min-height: 220px; display: grid; place-items: center; color: var(--muted); text-align: center; padding: 1rem; }
+    .hours { list-style: none; padding: 0; margin: 1rem 0 0; }
+    .hours li { display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid var(--line); color: var(--muted); }
+    .hours strong { color: var(--text); font-weight: 600; }
+
+    .cta { text-align: center; background: linear-gradient(135deg, var(--accent-dark), #155e75); border-radius: 20px; padding: 2.5rem 1.5rem; }
+    .cta p { opacity: 0.9; margin: 0 0 1.5rem; }
+    .cta .btn-main { background: white; color: #0e4a57; }
+
+    footer { color: var(--muted); font-size: 0.85rem; text-align: center; padding: 2rem 0 6rem; }
+
+    /* Sticky call button on phones */
+    .sticky-call { display: none; }
+    @media (max-width: 700px) {
+      .area { grid-template-columns: 1fr; }
+      .call-top { display: none; }
+      .sticky-call { display: block; position: fixed; left: 1rem; right: 1rem; bottom: 1rem; text-align: center; background: var(--accent); color: #042f37; font-weight: 700; padding: 1rem; border-radius: 14px; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-bar">📱 This is a <strong>demo website</strong> for a made-up business, built by Mike Garcia. <a href="../">See more examples</a></div>
+
+  <div class="wrap">
+    <header>
+      <a href="#" class="logo">Shine<span>Line</span></a>
+      <a href="tel:+15555550142" class="call-top">📞 (555) 555-0142</a>
+    </header>
+  </div>
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>Showroom shine,<br><em>right in your driveway.</em></h1>
+      <p>Mobile car detailing that comes to your home or office. You keep your day, and we bring the water, power and everything else.</p>
+      <div class="btns">
+        <a href="tel:+15555550142" class="btn btn-main">Call to book</a>
+        <a href="#packages" class="btn btn-ghost">See prices</a>
+      </div>
+      <div class="perks">
+        <span>✓ We come to you</span>
+        <span>✓ Fully insured</span>
+        <span>✓ Satisfaction guaranteed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section id="packages">
+      <h2>Packages</h2>
+      <p class="sub">Prices for sedans. SUVs and trucks add $30.</p>
+      <div class="packages">
+        <div class="pkg">
+          <h3>Express Wash</h3>
+          <p class="price">$59</p>
+          <ul>
+            <li>Hand wash and dry</li>
+            <li>Wheels and tires cleaned</li>
+            <li>Windows inside and out</li>
+            <li>About 45 minutes</li>
+          </ul>
+        </div>
+        <div class="pkg best">
+          <h3>Full Detail</h3>
+          <p class="price">$179</p>
+          <ul>
+            <li>Everything in Express</li>
+            <li>Full interior vacuum and wipe-down</li>
+            <li>Seats shampooed or leather conditioned</li>
+            <li>Hand wax for 3 months of protection</li>
+          </ul>
+        </div>
+        <div class="pkg">
+          <h3>Monthly Club</h3>
+          <p class="price">$99<small> /month</small></p>
+          <ul>
+            <li>Two Express Washes a month</li>
+            <li>Quick interior tidy each visit</li>
+            <li>Priority booking</li>
+            <li>Cancel anytime</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <p class="sub">Booking takes about a minute.</p>
+      <div class="steps">
+        <div class="step"><h3>Call or text</h3><p>Pick a package and a time that works for you.</p></div>
+        <div class="step"><h3>We show up</h3><p>Fully equipped, at your home or workplace.</p></div>
+        <div class="step"><h3>Drive happy</h3><p>Pay when you're done, by card or cash.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What customers say</h2>
+      <p class="sub">Reviews like these help new customers trust you.</p>
+      <div class="reviews">
+        <blockquote class="review">
+          <div class="stars">★★★★★</div>
+          <p>"Showed up on time and my car looks better than when I bought it. Booking the monthly club."</p>
+          <cite>Sample review</cite>
+        </blockquote>
+        <blockquote class="review">
+          <div class="stars">★★★★★</div>
+          <p>"Did my car in the office parking lot while I worked. Couldn't be easier."</p>
+          <cite>Sample review</cite>
+        </blockquote>
+      </div>
+      <p class="sample-note">On a real client's site, these are replaced with their actual Google reviews.</p>
+    </section>
+
+    <section>
+      <div class="area">
+        <div>
+          <h2>Where we go</h2>
+          <p class="sub">We serve the whole metro area, with no travel fee within 15 miles.</p>
+          <ul class="hours">
+            <li><span>Monday – Friday</span><strong>8am – 6pm</strong></li>
+            <li><span>Saturday</span><strong>9am – 4pm</strong></li>
+            <li><span>Sunday</span><strong>Closed</strong></li>
+          </ul>
+        </div>
+        <div class="map">🗺️<br>A Google Map of the service area goes here</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="cta">
+        <h2>Ready for a clean car?</h2>
+        <p>Most weeks we can come to you within 2 days.</p>
+        <a href="tel:+15555550142" class="btn btn-main">📞 Call (555) 555-0142</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>© Shine Line Mobile Detailing (demo business) · Website by Mike Garcia</footer>
+
+  <a href="tel:+15555550142" class="sticky-call">📞 Call to book</a>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taquería La Palma (Demo)</title>
+  <meta name="description" content="Demo website: a neighborhood taquería with menu, hours and location.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fff8ee;
+      --paper: #ffffff;
+      --ink: #2b1d14;
+      --muted: #7a6656;
+      --line: #f0e2cf;
+      --red: #c2410c;
+      --red-dark: #9a3412;
+      --green: #15803d;
+      --yellow: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Work Sans", system-ui, sans-serif; line-height: 1.55; }
+    a { color: inherit; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 1.25rem; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; }
+
+    .demo-bar { background: #fde047; color: #1a1a1a; text-align: center; font-size: 0.85rem; padding: 0.45rem 1rem; }
+    .demo-bar a { font-weight: 600; }
+
+    /* Striped top border, like papel picado colors */
+    .stripe { height: 8px; background: linear-gradient(90deg, var(--red) 0 25%, var(--yellow) 25% 50%, var(--green) 50% 75%, #db2777 75%); }
+
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+    .logo { font-family: "Fraunces", serif; font-weight: 900; font-size: 1.4rem; text-decoration: none; }
+    .logo span { color: var(--red); }
+    nav a { text-decoration: none; margin-left: 1.25rem; font-weight: 500; color: var(--muted); }
+    nav a:hover { color: var(--red); }
+
+    .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: center; padding: 2.5rem 0 3rem; }
+    .open-now { display: inline-block; background: #dcfce7; color: var(--green); font-weight: 600; font-size: 0.85rem; padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 1rem; }
+    .hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1; margin: 0 0 1rem; }
+    .hero h1 em { color: var(--red); font-style: italic; }
+    .hero p { color: var(--muted); font-size: 1.1rem; margin: 0 0 1.75rem; max-width: 30rem; }
+    .btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn { display: inline-block; text-decoration: none; font-weight: 600; padding: 0.85rem 1.4rem; border-radius: 12px; }
+    .btn-main { background: var(--red); color: white; }
+    .btn-main:hover { background: var(--red-dark); }
+    .btn-line { border: 2px solid var(--ink); }
+    .plate { aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #fff 0 55%, var(--line) 56% 60%, #fff 61%); display: grid; place-items: center; font-size: clamp(6rem, 18vw, 10rem); box-shadow: 0 20px 50px rgba(120, 60, 20, 0.15); }
+
+    section { padding: 3rem 0; }
+    h2 { font-size: 2.2rem; margin: 0 0 0.25rem; }
+    .sub { color: var(--muted); margin: 0 0 1.75rem; }
+
+    .menu { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .menu-group { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 1.5rem; }
+    .menu-group h3 { margin: 0 0 1rem; color: var(--red); font-size: 1.4rem; }
+    .item { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px dashed var(--line); }
+    .item:last-child { border-bottom: none; }
+    .item strong { display: block; }
+    .item small { color: var(--muted); }
+    .item .cost { font-weight: 600; white-space: nowrap; }
+
+    .reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .review { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 1.25rem; margin: 0; }
+    .stars { color: var(--yellow); letter-spacing: 2px; }
+    .review p { margin: 0.5rem 0; }
+    .review cite { color: var(--muted); font-style: normal; font-size: 0.9rem; }
+    .sample-note { color: var(--muted); font-size: 0.85rem; margin-top: 1rem; }
+
+    .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 1.5rem; }
+    .hours { list-style: none; padding: 0; margin: 0; }
+    .hours li { display: flex; justify-content: space-between; padding: 0.45rem 0; border-bottom: 1px solid var(--line); }
+    .hours li:last-child { border-bottom: none; }
+    .map { border-radius: 18px; min-height: 240px; background: #fdecd6 repeating-linear-gradient(0deg, transparent 0 22px, rgba(194, 65, 12, 0.06) 22px 24px), repeating-linear-gradient(90deg, transparent 0 22px, rgba(194, 65, 12, 0.06) 22px 24px); display: grid; place-items: center; text-align: center; color: var(--muted); padding: 1rem; border: 1px solid var(--line); }
+
+    footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 2rem 0 6rem; }
+
+    .sticky { display: none; }
+    @media (max-width: 720px) {
+      nav { display: none; }
+      .hero, .menu, .visit { grid-template-columns: 1fr; }
+      .plate { max-width: 220px; margin: 0 auto; order: -1; }
+      .sticky { display: flex; gap: 0.5rem; position: fixed; left: 1rem; right: 1rem; bottom: 1rem; }
+      .sticky a { flex: 1; text-align: center; text-decoration: none; font-weight: 600; padding: 0.95rem; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+      .sticky .call { background: var(--red); color: white; }
+      .sticky .dir { background: var(--ink); color: white; }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-bar">📱 This is a <strong>demo website</strong> for a made-up business, built by Mike Garcia. <a href="../">See more examples</a></div>
+  <div class="stripe"></div>
+
+  <div class="wrap">
+    <header>
+      <a href="#" class="logo">Taquería <span>La Palma</span></a>
+      <nav>
+        <a href="#menu">Menu</a>
+        <a href="#visit">Hours &amp; location</a>
+        <a href="tel:+15555550187">(555) 555-0187</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div>
+        <span class="open-now">● Open today until 9pm</span>
+        <h1>Tacos made <em>fresh</em>, every single day.</h1>
+        <p>Family recipes, handmade tortillas and salsas made every morning. Eat here, take it to go, or call ahead for pickup.</p>
+        <div class="btns">
+          <a href="tel:+15555550187" class="btn btn-main">📞 Call for pickup</a>
+          <a href="#menu" class="btn btn-line">See the menu</a>
+        </div>
+      </div>
+      <div class="plate" aria-hidden="true">🌮</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section id="menu">
+      <h2>Menu</h2>
+      <p class="sub">All tacos come on handmade corn tortillas with onion, cilantro and salsa.</p>
+      <div class="menu">
+        <div class="menu-group">
+          <h3>Tacos</h3>
+          <div class="item"><div><strong>Al Pastor</strong><small>Marinated pork, pineapple</small></div><span class="cost">$3.50</span></div>
+          <div class="item"><div><strong>Carne Asada</strong><small>Grilled steak</small></div><span class="cost">$3.75</span></div>
+          <div class="item"><div><strong>Pollo</strong><small>Chipotle chicken</small></div><span class="cost">$3.25</span></div>
+          <div class="item"><div><strong>Veggie</strong><small>Grilled peppers, beans, queso fresco</small></div><span class="cost">$3.00</span></div>
+        </div>
+        <div class="menu-group">
+          <h3>Plates &amp; more</h3>
+          <div class="item"><div><strong>Burrito</strong><small>Any meat, rice, beans, salsa</small></div><span class="cost">$11.00</span></div>
+          <div class="item"><div><strong>Quesadilla</strong><small>Flour tortilla, cheese, choice of meat</small></div><span class="cost">$9.50</span></div>
+          <div class="item"><div><strong>Taco Plate</strong><small>3 tacos, rice and beans</small></div><span class="cost">$13.00</span></div>
+          <div class="item"><div><strong>Horchata / Jamaica</strong><small>Made in-house</small></div><span class="cost">$3.50</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What people say</h2>
+      <p class="sub">Reviews like these help new customers trust you.</p>
+      <div class="reviews">
+        <blockquote class="review">
+          <div class="stars">★★★★★</div>
+          <p>"Best al pastor in town, hands down. The salsa verde is unreal."</p>
+          <cite>Sample review</cite>
+        </blockquote>
+        <blockquote class="review">
+          <div class="stars">★★★★★</div>
+          <p>"Called ahead and my order was hot and ready when I walked in."</p>
+          <cite>Sample review</cite>
+        </blockquote>
+      </div>
+      <p class="sample-note">On a real client's site, these are replaced with their actual Google reviews.</p>
+    </section>
+
+    <section id="visit">
+      <h2>Come visit</h2>
+      <p class="sub">123 Main Street (sample address), with plenty of parking out back.</p>
+      <div class="visit">
+        <div class="card">
+          <ul class="hours">
+            <li><span>Monday – Thursday</span><strong>10am – 9pm</strong></li>
+            <li><span>Friday – Saturday</span><strong>10am – 10pm</strong></li>
+            <li><span>Sunday</span><strong>9am – 8pm</strong></li>
+          </ul>
+        </div>
+        <div class="map">📍<br>A Google Map with directions goes here</div>
+      </div>
+    </section>
+  </div>
+
+  <footer>© Taquería La Palma (demo business) · Website by Mike Garcia</footer>
+
+  <div class="sticky">
+    <a href="tel:+15555550187" class="call">📞 Call</a>
+    <a href="#visit" class="dir">📍 Directions</a>
+  </div>
+</body>
+</html>
